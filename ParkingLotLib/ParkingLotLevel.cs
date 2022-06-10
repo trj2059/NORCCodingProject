@@ -11,12 +11,12 @@ namespace ParkingLotLib
         /// <summary>
         /// The parking lot spots are listed in [rows][columns]
         /// </summary>
-        private ParkingLotSpotSpace[,] _parkingLotSpots;
+        public ParkingLotSpotSpace[,] ParkingLotSpots { get; set; }
 
         public ParkingLotLevel(int level,ParkingLotSpotSpace[,] spaces)
         {
             Level = level;
-            _parkingLotSpots = spaces;
+            ParkingLotSpots = spaces;
         }
 
         /// <summary>

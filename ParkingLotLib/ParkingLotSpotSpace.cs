@@ -22,5 +22,7 @@ namespace ParkingLotLib
                     return false;
             }
         }
+
+        public SpotSpaceTypeEnum spaceType { get; set; }
     }
 }
