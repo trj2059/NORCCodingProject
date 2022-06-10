@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib.Assertions
 {
-    class ParkingInNonExistantLevelAssertion : AbstractParkingAssertion
+    public class ParkingInNonExistantLevelAssertion : AbstractParkingAssertion
     {
         public ParkingInNonExistantLevelAssertion() : base("Attempted to park in a non existant level")
         {

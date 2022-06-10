@@ -1,9 +1,17 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using ParkingLotLib.Assertions;
 
 namespace ParkingLotLib.UnitTests
 {
+    enum LotLevel
+    {
+        MotorCycle = 0,
+        Compact = 1,
+        Bus = 2
+    }
+
     public class Tests
     {
         private ParkingLot _parkingLot;
@@ -64,7 +72,7 @@ namespace ParkingLotLib.UnitTests
 
                 Motorcycle motorcycle = new Motorcycle(Guid.NewGuid(), localList);
 
-                _parkingLot.ParkAVehicle(motorcycle, 2);
+                _parkingLot.ParkAVehicle(motorcycle, (int)LotLevel.MotorCycle);
                 Assert.Pass(); // no exception shoudl have been thrown
             }
             catch (Exception ex)
@@ -87,7 +95,12 @@ namespace ParkingLotLib.UnitTests
                 localList.Add((0, 0)); // just use the corner spot
 
                 Car car = new Car(Guid.NewGuid(), localList);
-                _parkingLot.ParkAVehicle(car, 2);
+                _parkingLot.ParkAVehicle(car, (int)LotLevel.MotorCycle);
+                Assert.Fail("Should not be able to park a car in a motor cycle spot");
+            }
+            catch(CarAttemptedToParkInAMotorCycleSpotAssertion)
+            {
+                Assert.Pass("Shoudl not be able to park a car in a motor cycle space");
             }
             catch (Exception ex)
             {

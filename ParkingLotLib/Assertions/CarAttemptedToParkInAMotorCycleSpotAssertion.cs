@@ -9,7 +9,7 @@ namespace ParkingLotLib.Assertions
     /// <summary>
     /// Assertion to be caught if validation condition fails
     /// </summary>
-    class CarAttemptedToParkInAMotorCycleSpotAssertion : AbstractParkingAssertion
+    public class CarAttemptedToParkInAMotorCycleSpotAssertion : AbstractParkingAssertion
     {
         public CarAttemptedToParkInAMotorCycleSpotAssertion() : base("Car attempted to park in a motorcycle space.")
         {

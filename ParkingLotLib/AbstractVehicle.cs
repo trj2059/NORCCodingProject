@@ -13,7 +13,7 @@ namespace ParkingLotLib
         /// The row and column of the first lot space that the vehicle takes up.
         /// We use unsigned ints because we are loading up these values into an array.
         /// </summary>
-        public List<(uint, uint)> ListOfSpacesTheVehicleTakesUp { get; set; }
+        public List<(uint x, uint y)> ListOfSpacesTheVehicleTakesUp { get; set; }
 
         /// <summary>
         /// This constructor runs validation logic when creating a new vehicle.
@@ -58,15 +58,15 @@ namespace ParkingLotLib
                 return false;
 
             var initialSpot = ListOfSpacesTheVehicleTakesUp[0];
-            uint intialRow = initialSpot.Item1;
-            uint initalColumn = initialSpot.Item2;
+            uint intialRow = initialSpot.x;
+            uint initalColumn = initialSpot.y;
 
             // loop though all items that are not the inital location
-            List<(uint, uint)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.Item1 != intialRow && e.Item2 != initalColumn).ToList();
+            List<(uint x, uint y)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.x != intialRow && e.y != initalColumn).ToList();
             foreach (var spot in allButFIrstItem)
             {
                 // we have hit a non consecutive item
-                if (spot.Item1 != spot.Item1 + 1)
+                if (spot.x != spot.y + 1)
                     return false;
             }
 

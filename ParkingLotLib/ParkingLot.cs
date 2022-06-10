@@ -37,7 +37,7 @@ namespace ParkingLotLib
                             throw new VehicleTakesUpAnInvalidNumberOfSpacesAssertion();
                         
                         // the location of the motorcycle
-                        (uint, uint) lotLocation = m.ListOfSpacesTheVehicleTakesUp[0];
+                        (uint x, uint y) lotLocation = m.ListOfSpacesTheVehicleTakesUp[0];
                         
                         // get the parking garage level
                         ParkingLotLevel lotLevel = _levels[level];
@@ -45,7 +45,7 @@ namespace ParkingLotLib
                         // we can park in any spot as a motorcycle so no assertion is necessary.
 
                         // populate the space.
-                        lotLevel.ParkingLotSpots[lotLocation.Item1, lotLocation.Item2].VehicleUniqueIdenitifier = m.VehicleUniqueIdenitifier;
+                        lotLevel.ParkingLotSpots[lotLocation.x, lotLocation.y].VehicleUniqueIdenitifier = m.VehicleUniqueIdenitifier;
                     }
                     break;
 
@@ -56,12 +56,12 @@ namespace ParkingLotLib
                             throw new VehicleTakesUpAnInvalidNumberOfSpacesAssertion();
 
                         // the location of the motorcycle
-                        (uint, uint) lotLocation = c.ListOfSpacesTheVehicleTakesUp[0];
+                        (uint x, uint y) lotLocation = c.ListOfSpacesTheVehicleTakesUp[0];
 
                         // get the parking garage level
                         ParkingLotLevel lotLevel = _levels[level];
 
-                        if (lotLevel.ParkingLotSpots[lotLocation.Item1, lotLocation.Item2].spaceType == (SpotSpaceTypeEnum.Motorcycle))
+                        if (lotLevel.ParkingLotSpots[lotLocation.x, lotLocation.y].spaceType == (SpotSpaceTypeEnum.Motorcycle))
                             throw new CarAttemptedToParkInAMotorCycleSpotAssertion();
 
                         // populate the space.
