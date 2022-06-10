@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib
 {
-    public  class ParkingLotModel
+    public class Motorcycle : AbstractVehicle
     {
-        
     }
 }

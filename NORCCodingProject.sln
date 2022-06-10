@@ -7,15 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint.Services", "InterviewRESTfulEndPoint.Services\InterviewRESTfulEndPoint.Services.csproj", "{8847F4B8-DD40-4CBB-B5A4-B3F69F7258B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint.Tests", "InterviewRESTfulEndPoint.Tests\InterviewRESTfulEndPoint.Tests.csproj", "{1118A4B3-FA5E-4FE1-8893-50D72F315ABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint.UnitTests", "InterviewRESTfulEndPoint.Tests\InterviewRESTfulEndPoint.UnitTests.csproj", "{1118A4B3-FA5E-4FE1-8893-50D72F315ABC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint.Models", "InterviewRESTfulEndPoint.Models\InterviewRESTfulEndPoint.Models.csproj", "{3648BE0C-B3A7-4D12-A02A-76C80BBD95F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciLib", "FibonacciLib\FibonacciLib.csproj", "{C9218F86-6B04-4AB2-AE0D-770213A0B341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciLib.Tests", "FibonacciLib.Tests\FibonacciLib.Tests.csproj", "{1F782E80-05CF-4391-A2D5-A049D7C47D3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibonacciLib.UnitTests", "FibonacciLib.Tests\FibonacciLib.UnitTests.csproj", "{1F782E80-05CF-4391-A2D5-A049D7C47D3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLotLib", "ParkingLotLib\ParkingLotLib.csproj", "{AC9E5B8B-71CA-47A4-ACF3-1E992BCEC269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingLotLib.UnitTests", "ParkingLotLib.UnitTests\ParkingLotLib.UnitTests.csproj", "{232D5260-1BCA-412A-B061-F6463896795D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{AC9E5B8B-71CA-47A4-ACF3-1E992BCEC269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC9E5B8B-71CA-47A4-ACF3-1E992BCEC269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC9E5B8B-71CA-47A4-ACF3-1E992BCEC269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{232D5260-1BCA-412A-B061-F6463896795D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{232D5260-1BCA-412A-B061-F6463896795D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{232D5260-1BCA-412A-B061-F6463896795D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{232D5260-1BCA-412A-B061-F6463896795D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

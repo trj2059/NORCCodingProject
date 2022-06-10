@@ -4,7 +4,7 @@ using FibonacciLib;
 /// <summary>
 /// //https://en.wikipedia.org/wiki/Fibonacci_number
 /// </summary>
-namespace FibonacciLib.Tests
+namespace FibonacciLib.UnitTests
 {
     public class Tests
     {

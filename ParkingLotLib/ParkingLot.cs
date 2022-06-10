@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib
 {
-    public abstract class AbstractParkingLotSpot 
+    public class ParkingLot
     {
+        
     }
 }

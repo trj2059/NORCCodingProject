@@ -2,7 +2,7 @@ using NUnit.Framework;
 using InterviewRESTfulEndPoint.Controllers;
 using System.Diagnostics;
 
-namespace InterviewRESTfulEndPoint.Tests
+namespace InterviewRESTfulEndPoint.UnitTests
 {
     public class Tests
     {
@@ -18,8 +18,7 @@ namespace InterviewRESTfulEndPoint.Tests
 
         [Test]
         public void Test1()
-        {
-            
+        {          
             Assert.Pass();
         }
     }
