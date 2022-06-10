@@ -68,17 +68,20 @@ namespace ParkingLotLib
             uint currentColumn = initialColumn;
 
             // loop though all items that are not the inital location
-            List<(uint x, uint y)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.x != initialRow).ToList();
+            List<(uint x, uint y)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.y != initialColumn).ToList();
+            if (allButFIrstItem.Count == 0)
+                throw new BusAttemptedToParkInAnInvalidSpotAssertion();
+
             foreach (var spot in allButFIrstItem)
             {
                 if (spaces[spot.x, spot.y].spaceType != SpotSpaceTypeEnum.Large)
                     throw new BusAttemptedToParkInAnInvalidSpotAssertion();
 
                 // we have hit a non consecutive item
-                if (spot.x != currentRow + 1)
+                if (spot.y != currentColumn + 1)
                     return false;
 
-                currentRow = spot.x;
+                currentColumn = spot.y;
             }
 
             return true;

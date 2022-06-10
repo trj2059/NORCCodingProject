@@ -121,10 +121,10 @@ namespace ParkingLotLib.UnitTests
                 // create a list of spots                
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); // create 5 spots
-                localList.Add((1, 0));
-                localList.Add((2, 0));
-                localList.Add((3, 0));
-                localList.Add((4, 0));
+                localList.Add((0, 1));
+                localList.Add((0, 2));
+                localList.Add((0, 3));
+                localList.Add((0, 4));
 
                 // create the bus object and park it
                 Bus bus = new Bus(Guid.NewGuid(), localList);
@@ -149,10 +149,10 @@ namespace ParkingLotLib.UnitTests
                 // create a list of spots                
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); 
-                localList.Add((1, 0));
-                localList.Add((2, 0));
-                localList.Add((4, 0));// create 5 spots. Non-contiguous
-                localList.Add((5, 0));
+                localList.Add((0, 1));
+                localList.Add((0, 2));
+                localList.Add((0, 4));// create 5 spots. Non-contiguous
+                localList.Add((0, 5));
 
                 // create the bus object and park it
                 Bus bus = new Bus(Guid.NewGuid(), localList);
