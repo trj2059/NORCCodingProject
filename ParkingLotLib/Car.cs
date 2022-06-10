@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib
 {
-    public class Motorcycle : AbstractVehicle
+    public class Car : AbstractVehicle
     {
-        public Motorcycle(Guid guid,List<(uint,uint)> listOfSpacesMotorcycleTakesUp) : base(guid, listOfSpacesMotorcycleTakesUp)
+        public Car(Guid vuid,List<(uint,uint)> listOfSpacesTheCarTakesUp) 
+            : base(vuid, listOfSpacesTheCarTakesUp)
         {
 
         }
