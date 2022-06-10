@@ -66,7 +66,7 @@ namespace ParkingLotLib
             foreach (var spot in allButFIrstItem)
             {
                 // we have hit a non consecutive item
-                if (spot.x != spot.y + 1)
+                if (spot.y != spot.y + 1)
                     return false;
             }
 

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib
 {
+    /// <summary>
+    /// the parking lot is visualized has having multiple levels
+    /// </summary>
     public class ParkingLot
     {
         private readonly List<ParkingLotLevel> _levels;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ParkingLotLib
 {
+    /// <summary>
+    /// The parking lot level can be visualized as a 2 dimensional
+    /// array of spots allowing rows and columns
+    /// </summary>
     public class ParkingLotLevel
     {
         /// <summary>
