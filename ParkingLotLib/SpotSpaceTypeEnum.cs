@@ -10,6 +10,6 @@ namespace ParkingLotLib
     {
         Motorcycle,
         Compact,
-        Bus,
+        Large,
     }
 }

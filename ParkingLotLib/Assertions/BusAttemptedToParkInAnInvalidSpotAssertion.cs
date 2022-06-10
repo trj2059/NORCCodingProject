@@ -9,9 +9,9 @@ namespace ParkingLotLib.Assertions
     /// <summary>
     /// Assertion to be caught if validation condition fails
     /// </summary>
-    public class BusAttemptedToParkInASmallSpotAssertion : AbstractParkingAssertion
+    public class BusAttemptedToParkInAnInvalidSpotAssertion : AbstractParkingAssertion
     {
-        public BusAttemptedToParkInASmallSpotAssertion() : base("A bus tried to park in a small spot.")
+        public BusAttemptedToParkInAnInvalidSpotAssertion() : base("A bus tried to park in an invalid spot.")
         {
 
         }

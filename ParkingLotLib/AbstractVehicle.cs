@@ -52,22 +52,28 @@ namespace ParkingLotLib
             
         }
 
-        public bool DoesVehicleTakeUpFiveConsecutiveRowSpaces()
+        public bool DoesVehicleTakeUpFiveConsecutiveRowSpaces(ParkingLotSpotSpace[,] spaces)
         {
             if (ListOfSpacesTheVehicleTakesUp.Count != 5)
                 return false;
 
             var initialSpot = ListOfSpacesTheVehicleTakesUp[0];
-            uint intialRow = initialSpot.x;
+            uint initialRow = initialSpot.x;
             uint initialColumn = initialSpot.y;
 
-            uint currentRow = intialRow;
+            if (spaces[initialRow, initialColumn].spaceType != SpotSpaceTypeEnum.Large)
+                throw new BusAttemptedToParkInAnInvalidSpotAssertion();
+
+            uint currentRow = initialRow;
             uint currentColumn = initialColumn;
 
             // loop though all items that are not the inital location
-            List<(uint x, uint y)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.x != intialRow && e.y != initialColumn).ToList();
+            List<(uint x, uint y)> allButFIrstItem = ListOfSpacesTheVehicleTakesUp.Where(e => e.x != initialRow).ToList();
             foreach (var spot in allButFIrstItem)
             {
+                if (spaces[spot.x, spot.y].spaceType != SpotSpaceTypeEnum.Large)
+                    throw new BusAttemptedToParkInAnInvalidSpotAssertion();
+
                 // we have hit a non consecutive item
                 if (spot.x != currentRow + 1)
                     return false;

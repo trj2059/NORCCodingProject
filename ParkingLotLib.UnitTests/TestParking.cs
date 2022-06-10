@@ -9,7 +9,7 @@ namespace ParkingLotLib.UnitTests
     {
         MotorCycle = 0,
         Compact = 1,
-        Bus = 2
+        Large = 2
     }
 
     public class Tests
@@ -46,7 +46,7 @@ namespace ParkingLotLib.UnitTests
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    parkingLotSpacesLevel2[i, j] = new ParkingLotSpotSpace() { spaceType = SpotSpaceTypeEnum.Bus };
+                    parkingLotSpacesLevel2[i, j] = new ParkingLotSpotSpace() { spaceType = SpotSpaceTypeEnum.Large };
                 }
             }
 
@@ -70,10 +70,10 @@ namespace ParkingLotLib.UnitTests
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); // just use the corner spot
 
+                // create a motorcycle object and park it
                 Motorcycle motorcycle = new Motorcycle(Guid.NewGuid(), localList);
-
                 _parkingLot.ParkAVehicle(motorcycle, (int)LotLevel.MotorCycle);
-                Assert.Pass(); // no exception shoudl have been thrown
+                Assert.Pass("No exception shoudl have been thrown"); // no exception shoudl have been thrown
             }
             catch (Exception ex)
             {
@@ -94,13 +94,14 @@ namespace ParkingLotLib.UnitTests
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); // just use the corner spot
 
+                // create the car object and park it
                 Car car = new Car(Guid.NewGuid(), localList);
                 _parkingLot.ParkAVehicle(car, (int)LotLevel.MotorCycle);
                 Assert.Fail("Should not be able to park a car in a motor cycle spot");
             }
             catch(CarAttemptedToParkInAMotorCycleSpotAssertion)
             {
-                Assert.Pass("Shoudl not be able to park a car in a motor cycle space");
+                Assert.Pass("Should not be able to park a car in a motor cycle space");
             }
             catch (Exception ex)
             {
@@ -111,5 +112,66 @@ namespace ParkingLotLib.UnitTests
                 }
             }
         }
+
+        [Test]
+        public void Park_Bus_In_Five_Large_Consecutive_Spots_In_A_Row()
+        {
+            try
+            {
+                // create a list of spots                
+                var localList = new List<(uint, uint)>();
+                localList.Add((0, 0)); // create 5 spots
+                localList.Add((1, 0));
+                localList.Add((2, 0));
+                localList.Add((3, 0));
+                localList.Add((4, 0));
+
+                // create the bus object and park it
+                Bus bus = new Bus(Guid.NewGuid(), localList);
+                _parkingLot.ParkAVehicle(bus, (int)LotLevel.Large);
+                Assert.Pass("No exception shoudl have been thrown"); // no exception shoudl have been thrown
+            }
+            catch (Exception ex)
+            {
+                // TODO : Visual studio is throwing a mystery error so skip this hresult for now and look into it later.
+                if (ex.HResult != -2146233088)
+                {
+                    Assert.Fail("This no exceptions should have been thrown.  Exception:" + ex.ToString());
+                }
+            }
+        }
+
+        [Test]
+        public void Park_Bus_In_Five_Non_Consecutive_Spots_In_A_Row()
+        {
+            try
+            {
+                // create a list of spots                
+                var localList = new List<(uint, uint)>();
+                localList.Add((0, 0)); 
+                localList.Add((1, 0));
+                localList.Add((2, 0));
+                localList.Add((4, 0));// create 5 spots. Non-contiguous
+                localList.Add((5, 0));
+
+                // create the bus object and park it
+                Bus bus = new Bus(Guid.NewGuid(), localList);
+                _parkingLot.ParkAVehicle(bus, (int)LotLevel.Large);
+                Assert.Fail("An exception should have been thrown"); // no exception shoudl have been thrown
+            }
+            catch(BusDoesNotTakeUpFiveConsecutiveSpacesInARowAssertion)
+            {
+                Assert.Pass("The parking spaces are non contiguous");
+            }
+            catch (Exception ex)
+            {
+                // TODO : Visual studio is throwing a mystery error so skip this hresult for now and look into it later.
+                if (ex.HResult != -2146233088)
+                {
+                    Assert.Fail("This no exceptions should have been thrown.  Exception:" + ex.ToString());
+                }
+            }
+        }
+
     }
 }

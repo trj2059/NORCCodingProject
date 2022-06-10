@@ -73,6 +73,25 @@ namespace ParkingLotLib
                     break;
 
                 case Bus b:
+                    {
+                        // get the parking garage level
+                        ParkingLotLevel lotLevel = _levels[level];
+
+                        // verify that we taking up five spaces.
+                        if (b.ListOfSpacesTheVehicleTakesUp.Count != 5)
+                            throw new VehicleTakesUpAnInvalidNumberOfSpacesAssertion();
+
+                        // if we are taking up 5 spaces, make sure that they are in a consecutive row.
+                        if(b.ListOfSpacesTheVehicleTakesUp.Count == 5)
+                            if (!b.DoesVehicleTakeUpFiveConsecutiveRowSpaces(_levels[level].ParkingLotSpots))
+                                throw new BusDoesNotTakeUpFiveConsecutiveSpacesInARowAssertion();
+
+                        // populate the spaces
+                        foreach((uint x,uint y) location in b.ListOfSpacesTheVehicleTakesUp)
+                        {
+                            lotLevel.ParkingLotSpots[location.x, location.y].VehicleUniqueIdenitifier = b.VehicleUniqueIdenitifier;
+                        }
+                    }
                     break;
 
                 default:
