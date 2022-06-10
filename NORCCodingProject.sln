@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NORCCodingProject", "NORCCodingProject\NORCCodingProject.csproj", "{FF8DD201-C367-4BB7-A564-B9E5151991B2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint", "InterviewRESTfulEndPoint\InterviewRESTfulEndPoint.csproj", "{BAB39287-D5B1-48F5-8A25-63B0D7269B78}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewRESTfulEndPoint.Services", "InterviewRESTfulEndPoint.Services\InterviewRESTfulEndPoint.Services.csproj", "{8847F4B8-DD40-4CBB-B5A4-B3F69F7258B0}"
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF8DD201-C367-4BB7-A564-B9E5151991B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF8DD201-C367-4BB7-A564-B9E5151991B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF8DD201-C367-4BB7-A564-B9E5151991B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF8DD201-C367-4BB7-A564-B9E5151991B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BAB39287-D5B1-48F5-8A25-63B0D7269B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BAB39287-D5B1-48F5-8A25-63B0D7269B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAB39287-D5B1-48F5-8A25-63B0D7269B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
