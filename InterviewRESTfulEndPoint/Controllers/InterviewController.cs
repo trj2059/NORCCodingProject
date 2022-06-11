@@ -77,6 +77,7 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// <param name="id">The id of a given interview</param>
         /// <param name="value">the new interview</param>
         [HttpPut("{id}")]
+        [BasicAuth]
         public void Put(int id, [FromBody] string value)
         {
         }
@@ -87,6 +88,7 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// </summary>
         /// <param name="id">The ID of the interview</param>
         [HttpDelete("{id}")]
+        [BasicAuth]
         public void Delete(int id)
         {
         }
