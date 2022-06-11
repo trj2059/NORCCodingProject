@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using InterviewRESTfulEndPoint.Infrastructure.BasicAuth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[Authorize]
+        [BasicAuth]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
