@@ -45,9 +45,10 @@ namespace InterviewRESTfulEndPoint.UnitTests
         {
             try
             {
+                // add interviews to the _interviewController
+
                 Guid myGuid = Guid.NewGuid();
 
-                // add interviews to the _interviewController
                 Interview interview = new Interview()
                 {
                     DateTimeOfInterview = System.DateTime.Now,
@@ -57,12 +58,14 @@ namespace InterviewRESTfulEndPoint.UnitTests
                     InterviewResponses = null
                 };
 
+
                 _interviewController.Post(interview);
 
+                // retrive the interview we just added
                 var returnedInterview = _interviewController.Get(1);
 
-                Assert.IsTrue(returnedInterview.guid == myGuid);
-               
+                // does it have the same guid
+                Assert.IsTrue(returnedInterview.guid == myGuid);               
             } 
             catch(Exception ex)
             {
