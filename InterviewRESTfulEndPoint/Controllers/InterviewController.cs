@@ -54,9 +54,17 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// <returns>the interview object</returns>
         [HttpGet("{id}")]
         [BasicAuth]
-        public string Get(int id)
+        public Interview Get(int id)
         {
-            return "value";
+            try
+            {
+                return _interviewRepositoryService.GetInterview(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in InterviewController.  Exception message:" + ex.Message);
+                return null;
+            }
         }
 
         // POST api/<InterviewController>
@@ -68,6 +76,14 @@ namespace InterviewRESTfulEndPoint.Controllers
         [BasicAuth]
         public void Post([FromBody] Interview interview)
         {
+            try
+            {
+                _interviewRepositoryService.AddAnInterview(interview);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in InterviewController.  Exception message:" + ex.Message);
+            }
         }
 
         // PUT api/<InterviewController>/5
@@ -78,7 +94,7 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// <param name="value">the new interview</param>
         [HttpPut("{id}")]
         [BasicAuth]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Interview interview)
         {
         }
 
