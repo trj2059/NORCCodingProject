@@ -57,7 +57,7 @@ namespace InterviewRESTfulEndPoint.UnitTests
                     Interviewee = null,
                     InterviewResponses = null
                 };
-
+                Debug.WriteLine(interview);
 
                 _interviewController.Post(interview);
 
