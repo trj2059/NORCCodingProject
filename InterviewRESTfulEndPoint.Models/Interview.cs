@@ -11,16 +11,17 @@ namespace InterviewRESTfulEndPoint.Models
     /// <summary>
     /// Model for representing each individual interview.
     /// </summary>
-    public class InterviewModel
+    public class Interview
     {
         [Key]
         public int ID { get; set; }
-        [StringLength(200)]
-        public string InterviewerName { get; set; }
-        [StringLength(200)]
-        public string IntervieweeName { get; set; }
-
+        public Interviewee Interviewee { get; set; }
+        public List<InterviewResponse> InterviewResponses { get; set; }
+        public Guid? guid { get; set; } 
         public DateTime DateTimeOfInterview { get; set; }
-
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

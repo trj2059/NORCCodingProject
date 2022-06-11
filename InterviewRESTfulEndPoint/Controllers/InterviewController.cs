@@ -1,8 +1,11 @@
 ﻿using InterviewRESTfulEndPoint.Infrastructure.BasicAuth;
+using InterviewRESTfulEndPoint.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using InterviewRESTfulEndPoint.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,21 +17,33 @@ namespace InterviewRESTfulEndPoint.Controllers
     [ApiController]
     public class InterviewController : ControllerBase
     {
-        public InterviewController()
-        {
+        private readonly IInterviewRepositoryService _interviewRepositoryService;
+        private readonly ILogger _logger;
 
+        public InterviewController(ILogger<InterviewController> logger, IInterviewRepositoryService interviewRepositoryService)
+        {
+            _logger = logger;
+            _interviewRepositoryService = interviewRepositoryService;
         }
 
         // GET: api/<InterviewController>
         /// <summary>
-        /// Gets all interviews
+        /// Gets a range of interviews
         /// </summary>
-        /// <returns></returns>
-        [HttpGet]
+        /// <returns>a list of interviews</returns>
+        [HttpGet("{start}/{range}")]
         [BasicAuth]
-        public IEnumerable<string> Get()
+        public IEnumerable<Interview> Get(int start,int range)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                return _interviewRepositoryService.GetRange(start, range);
+            } 
+            catch(Exception ex)
+            {
+                _logger.LogError("Error in InterviewController.  Exception message:" + ex.Message);
+                return null;
+            }
         }
 
         // GET api/<InterviewController>/5
@@ -38,6 +53,7 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// <param name="id">The interview id</param>
         /// <returns>the interview object</returns>
         [HttpGet("{id}")]
+        [BasicAuth]
         public string Get(int id)
         {
             return "value";
@@ -49,7 +65,8 @@ namespace InterviewRESTfulEndPoint.Controllers
         /// </summary>
         /// <param name="value">a new interview</param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [BasicAuth]
+        public void Post([FromBody] Interview interview)
         {
         }
 

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InterviewRESTfulEndPoint.Models\InterviewRESTfulEndPoint.Models.csproj" />
     <ProjectReference Include="..\InterviewRESTfulEndPoint.Services\InterviewRESTfulEndPoint.Services.csproj" />
   </ItemGroup>
 
