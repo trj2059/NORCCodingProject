@@ -96,6 +96,14 @@ namespace InterviewRESTfulEndPoint.Controllers
         [BasicAuth]
         public void Put(int id, [FromBody] Interview interview)
         {
+            try
+            {
+                _interviewRepositoryService.UpdateInterview(interview);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in InterviewController.  Exception message:" + ex.Message);
+            }
         }
 
         // DELETE api/<InterviewController>/5
@@ -107,6 +115,14 @@ namespace InterviewRESTfulEndPoint.Controllers
         [BasicAuth]
         public void Delete(int id)
         {
+            try
+            {
+                _interviewRepositoryService.DeleteInterview(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error in InterviewController.  Exception message:" + ex.Message);
+            }
         }
     }
 }

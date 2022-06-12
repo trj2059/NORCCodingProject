@@ -2,6 +2,7 @@ using InterviewRESTfulEndPoint.Models;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -42,18 +43,29 @@ namespace InterviewRESTfulEndPoint.FunctionalTests
 
 			Interview interview = new Interview()
 			{
-				DateTimeOfInterview = System.DateTime.Now,
-		
+				ID = 1,
+				DateTimeOfInterview = System.DateTime.Now,		
 				guid = myGuid,
 				Interviewee = null,
 				InterviewResponses = null
 			};
 
+			Debug.WriteLine(interview);
+
+			// post the interview item.
 			_httpRequestMessage.Content = new StringContent(interview.ToString(), Encoding.UTF8, "application/json");
 			var response = await _httpClient.SendAsync(_httpRequestMessage);
 			if (response.StatusCode != HttpStatusCode.OK)
 				Assert.Fail("Unable to connect");
-			string responsString = await response.Content.ReadAsStringAsync();
+
+			// get the corresponding interview
+			const int interviewNumber = 1;
+			_httpRequestMessage =  new HttpRequestMessage(HttpMethod.Get, new Uri(BaseAddress + $"/api/Interview/{interviewNumber}"));
+			var response2 = await _httpClient.SendAsync(_httpRequestMessage);
+			if (response2.StatusCode != HttpStatusCode.OK)
+				Assert.Fail("Unable to connect");
+
+			string responsString = await response2.Content.ReadAsStringAsync();
 
 			Assert.Pass();
         }

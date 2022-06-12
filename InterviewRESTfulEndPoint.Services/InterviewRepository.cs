@@ -15,6 +15,8 @@ namespace InterviewRESTfulEndPoint.Services
         public Interview GetInterview(int id);
 
         public void DeleteAllInterviews();
+        public void DeleteInterview(int id);
+        public void UpdateInterview(Interview interview);
 
         public List<Interview> GetRange(int start,int count);
     }
@@ -48,6 +50,28 @@ namespace InterviewRESTfulEndPoint.Services
         public List<Interview> GetRange(int start,int count)
         {
             return localRepository.Skip(start).Take(count).ToList();
+        }
+
+        public void DeleteInterview(int id)
+        {
+            var tmp = localRepository.Where(e => e.ID != id).ToList();
+            localRepository.Clear();
+            foreach(var i in tmp)
+            {
+                localRepository.Add(i);
+            }
+        }
+
+        public void UpdateInterview(Interview interview)
+        {
+            // first delete the interview with the corresponding id
+            var tmp = localRepository.Where(e => e.ID != interview.ID).ToList();
+            localRepository.Clear();
+            foreach (var i in tmp)
+            {
+                localRepository.Add(i);
+            }
+            localRepository.Add(interview);
         }
     }
 }
