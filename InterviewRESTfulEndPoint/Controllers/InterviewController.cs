@@ -28,7 +28,7 @@ namespace InterviewRESTfulEndPoint.Controllers
 
         // GET: api/<InterviewController>
         /// <summary>
-        /// Gets a range of interviews
+        /// Gets a range of interviews.  Used to handle large amounts of data.
         /// </summary>
         /// <returns>a list of interviews</returns>
         [HttpGet("{start}/{range}")]
