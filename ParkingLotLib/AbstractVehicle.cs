@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ParkingLotLib
 {
     public abstract class AbstractVehicle
-    {
+    {        
         /// <summary>
         /// The row and column of the first lot space that the vehicle takes up.
         /// We use unsigned ints because we are loading up these values into an array.
@@ -22,6 +22,8 @@ namespace ParkingLotLib
         /// <param name="listOfSpacesTheVehicleTakesUp">The spaces the vehicle is taking up.</param>
         public AbstractVehicle(Guid vuid,List<(uint,uint)> listOfSpacesTheVehicleTakesUp)
         {
+            VehicleUniqueIdenitifier = vuid;
+
             ListOfSpacesTheVehicleTakesUp = listOfSpacesTheVehicleTakesUp;
             if (ListOfSpacesTheVehicleTakesUp == null)
                 throw new NullReferenceException();
@@ -78,10 +80,10 @@ namespace ParkingLotLib
                     throw new BusAttemptedToParkInAnInvalidSpotAssertion();
 
                 // we have hit a non consecutive item
-                if (spot.y != currentColumn + 1)
+                if (spot.y != currentRow + 1)
                     return false;
 
-                currentColumn = spot.y;
+                currentRow = spot.y;
             }
 
             return true;

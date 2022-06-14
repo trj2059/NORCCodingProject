@@ -229,9 +229,11 @@ namespace ParkingLotLib.UnitTests
                 localList.Add((0, 4));
 
                 // create the bus object and park it
-                Bus bus = new Bus(Guid.NewGuid(), localList);
+                Guid guid = Guid.NewGuid();
+                Bus bus = new Bus(guid, localList);
                 _parkingLot.ParkAVehicle(bus, (int)LotLevel.Large);
                 Assert.Pass("No exception shoudl have been thrown"); // no exception shoudl have been thrown
+                return;
             }
             catch (Exception ex)
             {
@@ -240,6 +242,7 @@ namespace ParkingLotLib.UnitTests
                 {
                     Assert.Fail("This no exceptions should have been thrown.  Exception:" + ex.ToString());
                 }
+                //Assert.Fail("No exception should have been thrown.");
             }
         }
 
@@ -251,10 +254,10 @@ namespace ParkingLotLib.UnitTests
                 // create a list of spots                
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); // create 5 spots
-                localList.Add((0, 1));
-                localList.Add((0, 2));
-                localList.Add((0, 3));
-                localList.Add((0, 4));
+                localList.Add((1, 0));
+                localList.Add((2, 0));
+                localList.Add((3, 0));
+                localList.Add((4, 0));
 
                 // create the bus object and park it
                 Bus bus = new Bus(Guid.NewGuid(), localList);
@@ -264,6 +267,7 @@ namespace ParkingLotLib.UnitTests
             catch(BusAttemptedToParkInAnInvalidSpotAssertion)
             {
                 Assert.Pass("We attempted to park in an invalid spot");
+                return;
             }
             catch (Exception ex)
             {
@@ -283,10 +287,10 @@ namespace ParkingLotLib.UnitTests
                 // create a list of spots                
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); // create 5 spots
-                localList.Add((0, 1));
-                localList.Add((0, 2));
-                localList.Add((0, 3));
-                localList.Add((0, 4));
+                localList.Add((1, 0));
+                localList.Add((2, 0));
+                localList.Add((3, 0));
+                localList.Add((4, 0));
 
                 // create the bus object and park it
                 Bus bus = new Bus(Guid.NewGuid(), localList);
@@ -296,6 +300,7 @@ namespace ParkingLotLib.UnitTests
             catch (BusAttemptedToParkInAnInvalidSpotAssertion)
             {
                 Assert.Pass("We attempted to park in an invalid spot");
+                return;
             }
             catch (Exception ex)
             {
@@ -315,10 +320,10 @@ namespace ParkingLotLib.UnitTests
                 // create a list of spots                
                 var localList = new List<(uint, uint)>();
                 localList.Add((0, 0)); 
-                localList.Add((0, 1));
-                localList.Add((0, 2));
-                localList.Add((0, 4));// create 5 spots. Non-contiguous
-                localList.Add((0, 5));
+                localList.Add((1, 0));
+                localList.Add((2, 0));
+                localList.Add((4, 0));// create 5 spots. Non-contiguous
+                localList.Add((5, 0));
 
                 // create the bus object and park it
                 Bus bus = new Bus(Guid.NewGuid(), localList);
@@ -328,6 +333,7 @@ namespace ParkingLotLib.UnitTests
             catch(BusDoesNotTakeUpFiveConsecutiveSpacesInARowAssertion)
             {
                 Assert.Pass("The parking spaces are non contiguous");
+                return;
             }
             catch (Exception ex)
             {
