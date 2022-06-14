@@ -160,10 +160,11 @@ namespace InterviewRESTfulEndPoint.UnitTests
                 }
 
                 // get 5 interviews starting at 3.
-                var ListOfInterviews = _interviewController.Get(2, 5);
+                var ListOfInterviews = _interviewController.Get(2, 5);                
 
                 var range = new HashSet<int>() { 3, 4, 5, 6, 7 };
 
+                int count = 0;
                 foreach(var i in ListOfInterviews)
                 {
                     if (!range.Contains(i.ID))
@@ -171,8 +172,9 @@ namespace InterviewRESTfulEndPoint.UnitTests
                         Assert.Fail("Missing Item!");
                         return;
                     }
-
+                    count++;
                 }
+                Assert.IsTrue(count == 5);
                 Assert.Pass();
             }
             catch (Exception ex)
