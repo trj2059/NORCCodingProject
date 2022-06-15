@@ -39,6 +39,7 @@ namespace InterviewRESTfulEndPoint.FunctionalTests
         {
 			_httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, new Uri(BaseAddress + "/api/Interview"));
 
+			// create a gneric interview
 			Guid myGuid = Guid.NewGuid();
 
 			Interview interview = new Interview()
@@ -65,9 +66,10 @@ namespace InterviewRESTfulEndPoint.FunctionalTests
 			if (response2.StatusCode != HttpStatusCode.OK)
 				Assert.Fail("Unable to connect");
 
-			string responsString = await response2.Content.ReadAsStringAsync();
+			string responsString = await response2.Content.ReadAsStringAsync();			
 
-			Assert.Pass();
+			// TODO Make sure the interview pulled matches what we posted
+						
         }
     }
 

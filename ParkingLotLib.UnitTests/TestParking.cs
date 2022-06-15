@@ -21,6 +21,7 @@ namespace ParkingLotLib.UnitTests
         {
             // build up our mock parking lot with 3 levels each with 100 spaces
             ParkingLotSpotSpace[,] parkingLotSpacesLevel0 = new ParkingLotSpotSpace[10, 10];
+            
             // make the first level only avaliable for motercycles
             for (int i = 0; i < 10; i++)
             {
@@ -40,7 +41,7 @@ namespace ParkingLotLib.UnitTests
                 }
             }
 
-            // make the third level only avaliable for busses.
+            // make the third level only avaliable for buses.
             ParkingLotSpotSpace[,] parkingLotSpacesLevel2 = new ParkingLotSpotSpace[10, 10];
             for (int i = 0; i < 10; i++)
             {
@@ -50,6 +51,7 @@ namespace ParkingLotLib.UnitTests
                 }
             }
 
+            // load up the parking lot
             var parkingLotLevel0 = new ParkingLotLevel(0, parkingLotSpacesLevel0);
             var parkingLotLevel1 = new ParkingLotLevel(1, parkingLotSpacesLevel1);
             var parkingLotLevel2 = new ParkingLotLevel(2, parkingLotSpacesLevel2);
@@ -232,8 +234,7 @@ namespace ParkingLotLib.UnitTests
                 Guid guid = Guid.NewGuid();
                 Bus bus = new Bus(guid, localList);
                 _parkingLot.ParkAVehicle(bus, (int)LotLevel.Large);
-                Assert.Pass("No exception shoudl have been thrown"); // no exception shoudl have been thrown
-                return;
+                Assert.Pass("No exception should have been thrown"); // no exception shoudl have been thrown             
             }
             catch (Exception ex)
             {
@@ -266,8 +267,7 @@ namespace ParkingLotLib.UnitTests
             }
             catch(BusAttemptedToParkInAnInvalidSpotAssertion)
             {
-                Assert.Pass("We attempted to park in an invalid spot");
-                return;
+                Assert.Pass("We attempted to park in an invalid spot");                
             }
             catch (Exception ex)
             {
@@ -299,8 +299,7 @@ namespace ParkingLotLib.UnitTests
             }
             catch (BusAttemptedToParkInAnInvalidSpotAssertion)
             {
-                Assert.Pass("We attempted to park in an invalid spot");
-                return;
+                Assert.Pass("We attempted to park in an invalid spot");                
             }
             catch (Exception ex)
             {
@@ -332,8 +331,7 @@ namespace ParkingLotLib.UnitTests
             }
             catch(BusDoesNotTakeUpFiveConsecutiveSpacesInARowAssertion)
             {
-                Assert.Pass("The parking spaces are non contiguous");
-                return;
+                Assert.Pass("The parking spaces are non contiguous");             
             }
             catch (Exception ex)
             {
