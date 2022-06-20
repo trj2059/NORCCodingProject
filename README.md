@@ -2,12 +2,13 @@
 
 ﻿Problem Description
 
-1) Fibonacci numbers are a sequence of whole numbers arranged as 
+Fibonacci numbers are a sequence of whole numbers arranged as 
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34,... Every number is the sum of 
 the preceding two numbers. Write a solution for calculating 
 the Nth Fibonacci number in C#.
-﻿
-2) Design or create a simple REST API for interviewers and interviews and 
+
+
+Design or create a simple REST API for interviewers and interviews and 
 take the following into consideration:
 
 A. Interviewers can have multiple interviews
@@ -17,7 +18,7 @@ D. Be able to explain how your API is secure/or the best way to secure one.
 E. Be able to describe and explain your API design.
 
 
-3) Design a parking lot using object-oriented principles that can take in 
+Design a parking lot using object-oriented principles that can take in 
 account for the following:
 
 A. The parking lot has multiple levels. Each level has multiple rows of spots.
